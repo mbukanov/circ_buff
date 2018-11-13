@@ -4,11 +4,13 @@ Just circular buffer in C.
 
 Use example
 ```C
+const int string_size = 20;
+const int strings_count = 10;
 int i = 0;
 char buffer[32] = "";
 for(i; i < 15; i++) {
     sprintf(buffer, "string_%d", i);
-    circ_open_and_write("./testfile.txt", 200, 10, buffer);
+    circ_open_and_write("./testfile.txt", string_size, strings_count, buffer);
 }
 ```
 
