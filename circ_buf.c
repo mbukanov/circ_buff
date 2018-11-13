@@ -13,8 +13,8 @@ static int max_strings_count = 0;
 
 
 int file_exists(const char * filename) {
-    /* 1 - file exists; 0 - file not exists */
-    return (access( filename, F_OK ) != -1);
+	/* 1 - file exists; 0 - file not exists */
+	 return (access( filename, F_OK ) != -1);
 }
 
 int circ_find_last_entry_offset(FILE * fp) {
@@ -62,14 +62,14 @@ int circ_open_and_write(const char * filename, const int strings_size, const int
 	FILE * fp = fopen(filename, "r+");
 	if(!fp) return -1;
 	int last_entry_offset = circ_find_last_entry_offset(fp);
-    if( (last_entry_offset + max_string_size) > max_size ) {
-        fseek(fp, 0, SEEK_SET);
-    } else {
-        fseek(fp, last_entry_offset, SEEK_SET);
-    }
-    circ_write_entry(fp, buffer);
-    fseek(fp, 0, SEEK_END);
-    fclose(fp);
+	if( (last_entry_offset + max_string_size) > max_size ) {
+		fseek(fp, 0, SEEK_SET);
+	} else {
+		fseek(fp, last_entry_offset, SEEK_SET);
+	}
+	circ_write_entry(fp, buffer);
+	fseek(fp, 0, SEEK_END);
+	fclose(fp);
 	return 0;
 }
 
